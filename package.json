@@ -4,14 +4,15 @@
   "description": "Design Dirigido à domínio",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GabrielCardosoLIma/clean-arch-ddd.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gabriel Cardoso Lima",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GabrielCardosoLIma/clean-arch-ddd/issues"
