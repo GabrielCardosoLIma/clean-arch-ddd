@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/GabrielCardosoLIma/clean-arch-ddd#readme",
   "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^22.13.1",
     "eslint": "^8.57.1",
