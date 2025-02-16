@@ -34,24 +34,24 @@ describe("Edit Question", () => {
       content: "Conteúdo teste",
     });
   });
-});
 
-it("should not be able to edit a question from another user", async () => {
-  const newQuestion = makeQuestion(
-    {
-      authorId: new UniqueEntityID("author-1"),
-    },
-    new UniqueEntityID("question-1")
-  );
+  it("should not be able to edit a question from another user", async () => {
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityID("author-1"),
+      },
+      new UniqueEntityID("question-1")
+    );
 
-  inMemoryQuestionsRepository.create(newQuestion);
+    inMemoryQuestionsRepository.create(newQuestion);
 
-  await expect(async () => {
-    await sut.execute({
-      questionId: newQuestion.id.toString(),
-      authorId: "author-2",
-      title: "Pergunta teste",
-      content: "Conteúdo teste",
-    });
-  }).rejects.toBeInstanceOf(Error);
+    await expect(async () => {
+      await sut.execute({
+        questionId: newQuestion.id.toString(),
+        authorId: "author-2",
+        title: "Pergunta teste",
+        content: "Conteúdo teste",
+      });
+    }).rejects.toBeInstanceOf(Error);
+  });
 });

@@ -32,23 +32,23 @@ describe("Edit Answer", () => {
       content: "Conteúdo teste",
     });
   });
-});
 
-it("should not be able to edit a answer from another user", async () => {
-  const newAnswer = makeAnswer(
-    {
-      authorId: new UniqueEntityID("author-1"),
-    },
-    new UniqueEntityID("answer-1")
-  );
+  it("should not be able to edit a answer from another user", async () => {
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID("author-1"),
+      },
+      new UniqueEntityID("answer-1")
+    );
 
-  inMemoryAnswersRepository.create(newAnswer);
+    inMemoryAnswersRepository.create(newAnswer);
 
-  await expect(async () => {
-    await sut.execute({
-      answerId: newAnswer.id.toString(),
-      authorId: "author-2",
-      content: "Conteúdo teste",
-    });
-  }).rejects.toBeInstanceOf(Error);
+    await expect(async () => {
+      await sut.execute({
+        answerId: newAnswer.id.toString(),
+        authorId: "author-2",
+        content: "Conteúdo teste",
+      });
+    }).rejects.toBeInstanceOf(Error);
+  });
 });

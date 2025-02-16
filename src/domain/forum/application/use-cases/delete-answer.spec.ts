@@ -29,22 +29,22 @@ describe("Delete Answer", () => {
 
     expect(inMemoryAnswersRepository.items).toHaveLength(0);
   });
-});
 
-it("should not be able to delete a answer from another user", async () => {
-  const newAnswer = makeAnswer(
-    {
-      authorId: new UniqueEntityID("author-1"),
-    },
-    new UniqueEntityID("answer-1")
-  );
+  it("should not be able to delete a answer from another user", async () => {
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID("author-1"),
+      },
+      new UniqueEntityID("answer-1")
+    );
 
-  inMemoryAnswersRepository.create(newAnswer);
+    inMemoryAnswersRepository.create(newAnswer);
 
-  await expect(async () => {
-    await sut.execute({
-      authorId: "author-2",
-      answerId: "answer-1",
-    });
-  }).rejects.toBeInstanceOf(Error);
+    await expect(async () => {
+      await sut.execute({
+        authorId: "author-2",
+        answerId: "answer-1",
+      });
+    }).rejects.toBeInstanceOf(Error);
+  });
 });
